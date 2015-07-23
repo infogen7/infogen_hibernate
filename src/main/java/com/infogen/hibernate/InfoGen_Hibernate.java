@@ -15,9 +15,9 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import com.infogen.aop.AOP;
 import com.infogen.hibernate.annotation.AutoClose;
 import com.infogen.hibernate.event_handle.InfoGen_AOP_Handle_AutoClose;
-import com.larrylgq.aop.AOP;
 
 /**
  * @author larry
@@ -34,8 +34,8 @@ public class InfoGen_Hibernate {
 		LOGGER.info("#创建 hibernate  连接池");
 		if (sessionFactory == null) {
 			try {
-				AOP.getInstance().add_advice_method(AutoClose.class, new InfoGen_AOP_Handle_AutoClose());
-				AOP.getInstance().advice();
+				 AOP.getInstance().add_advice_method(AutoClose.class, new InfoGen_AOP_Handle_AutoClose());
+				 AOP.getInstance().advice();
 
 				Configuration cfg = new Configuration().configure(new File(path));
 				LOGGER.info(base_package);

@@ -8,9 +8,9 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.infogen.aop.advice.event_handle.AOP_Handle;
+import com.infogen.aop.agent.Agent_Advice_Method;
 import com.infogen.hibernate.InfoGen_Hibernate;
-import com.larrylgq.aop.advice.event_handle.AOP_Handle;
-import com.larrylgq.aop.agent.Agent_Advice_Method;
 
 /**
  * 自动关闭hibernate session的处理器
