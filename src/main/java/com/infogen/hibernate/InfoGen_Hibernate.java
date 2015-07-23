@@ -34,8 +34,7 @@ public class InfoGen_Hibernate {
 		LOGGER.info("#创建 hibernate  连接池");
 		if (sessionFactory == null) {
 			try {
-				 AOP.getInstance().add_advice_method(AutoClose.class, new InfoGen_AOP_Handle_AutoClose());
-				 AOP.getInstance().advice();
+				AOP.getInstance().add_advice_method(AutoClose.class, new InfoGen_AOP_Handle_AutoClose());
 
 				Configuration cfg = new Configuration().configure(new File(path));
 				LOGGER.info(base_package);
