@@ -35,6 +35,9 @@ public class InfoGen_Hibernate {
 		if (sessionFactory == null) {
 			try {
 				AOP.getInstance().add_advice_method(AutoClose.class, new InfoGen_AOP_Handle_AutoClose());
+				if (AOP.getInstance().isadvice) {
+					LOGGER.error("AutoClose注解不可用,请将InfoGen_Hibernate初始化代码放在启动infogen之前");
+				}
 
 				Configuration cfg = new Configuration().configure(new File(path));
 				LOGGER.info(base_package);
