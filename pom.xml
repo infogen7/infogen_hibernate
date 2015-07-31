@@ -5,7 +5,7 @@
 	<groupId>com.infogen</groupId>
 	<artifactId>infogen_hibernate</artifactId>
 	<packaging>jar</packaging>
-	<version>V1.1.04R150727</version>
+	<version>V1.1.04R150731</version>
 
 	<name>infogen_hibernate</name>
 	<url>https://github.com/larrylgq/infogen_hibernate</url>
@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>com.infogen</groupId>
 			<artifactId>infogen_aop</artifactId>
-			<version>V1.1.04R150727</version>
+			<version>V1.1.04R150731</version>
 		</dependency>
 
 		<dependency>
