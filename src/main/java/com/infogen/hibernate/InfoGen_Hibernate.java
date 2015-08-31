@@ -24,7 +24,7 @@ import com.infogen.hibernate.event_handle.InfoGen_AOP_Handle_AutoClose;
  * @email larry.lv.word@gmail.com
  * @version 创建时间 2013-4-7 下午1:09:21
  */
-public class InfoGen_Hibernate {
+public abstract class InfoGen_Hibernate {
 	private static final Logger LOGGER = Logger.getLogger(InfoGen_Hibernate.class.getName());
 	public static final ThreadLocal<List<Session>> list_session_thread_local = new ThreadLocal<>();
 	public static final ThreadLocal<Session> current_session_thread_local = new ThreadLocal<Session>();
@@ -50,6 +50,11 @@ public class InfoGen_Hibernate {
 		}
 		LOGGER.info("#创建 hibernate  连接池成功");
 		return sessionFactory;
+	}
+
+	public InfoGen_Hibernate() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
