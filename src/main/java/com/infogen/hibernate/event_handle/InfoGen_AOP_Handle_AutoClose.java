@@ -4,7 +4,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -20,7 +21,7 @@ import com.infogen.hibernate.InfoGen_Hibernate;
  * @version 1.0
  */
 public class InfoGen_AOP_Handle_AutoClose extends AOP_Handle {
-	private static final Logger LOGGER = Logger.getLogger(InfoGen_AOP_Handle_AutoClose.class.getName());
+	private static final Logger LOGGER = LogManager.getLogger(InfoGen_AOP_Handle_AutoClose.class.getName());
 
 	@Override
 	public Agent_Advice_Method attach_method(String class_name, Method method, Annotation annotation) {

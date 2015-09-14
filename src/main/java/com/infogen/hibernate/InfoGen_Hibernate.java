@@ -8,7 +8,8 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -25,7 +26,7 @@ import com.infogen.hibernate.event_handle.InfoGen_AOP_Handle_AutoClose;
  * @version 创建时间 2013-4-7 下午1:09:21
  */
 public abstract class InfoGen_Hibernate {
-	private static final Logger LOGGER = Logger.getLogger(InfoGen_Hibernate.class.getName());
+	private static final Logger LOGGER = LogManager.getLogger(InfoGen_Hibernate.class.getName());
 	public static final ThreadLocal<List<Session>> list_session_thread_local = new ThreadLocal<>();
 	public static final ThreadLocal<Session> current_session_thread_local = new ThreadLocal<Session>();
 	private static SessionFactory sessionFactory = null;
