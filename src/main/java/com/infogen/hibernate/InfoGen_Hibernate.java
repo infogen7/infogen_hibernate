@@ -21,9 +21,10 @@ import com.infogen.hibernate.annotation.AutoClose;
 import com.infogen.hibernate.event_handle.InfoGen_AOP_Handle_AutoClose;
 
 /**
- * @author larry
- * @email larry.lv.word@gmail.com
- * @version 创建时间 2013-4-7 下午1:09:21
+ * 
+ * @author larry/larrylv@outlook.com/创建时间 2015年11月20日 下午7:01:37
+ * @since 1.0
+ * @version 1.0
  */
 public abstract class InfoGen_Hibernate {
 	private static final Logger LOGGER = LogManager.getLogger(InfoGen_Hibernate.class.getName());
@@ -58,14 +59,7 @@ public abstract class InfoGen_Hibernate {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * 动态加载hibernate 映射 实体类 取代在 xml 中配置 <mapping class="com.model.modelPo"/>
-	 * 
-	 * @param scanRootPackage
-	 * @param cfg
-	 * @return {@linkplain Configuration}
-	 * @throws IOException
-	 */
+	// 动态加载hibernate 映射 实体类 取代在 xml 中配置 <mapping class="com.model.modelPo"/>
 	public static Configuration autoScanAnnotatedEntityClass(String scanRootPackage, Configuration cfg) throws IOException {
 		Set<Class<?>> classes = AOP.getInstance().getClasses();
 		for (Class<?> clazz : classes) {
@@ -80,12 +74,7 @@ public abstract class InfoGen_Hibernate {
 		return cfg;
 	}
 
-	/**
-	 * 需要自行关闭 session
-	 * 
-	 * @return
-	 * @throws ErrorLogException
-	 */
+	// 需要自行关闭 session
 	public static Session createSession() {
 		Session session = sessionFactory.openSession();
 		List<Session> list = list_session_thread_local.get();
