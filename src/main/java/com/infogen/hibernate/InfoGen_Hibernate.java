@@ -44,6 +44,7 @@ public abstract class InfoGen_Hibernate {
 				Configuration cfg = new Configuration().configure(new File(path));
 				LOGGER.info(base_package);
 				cfg = autoScanAnnotatedEntityClass(base_package, cfg);
+				//cfg.setProperty(propertyName, value);
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties()).build();
 				sessionFactory = cfg.buildSessionFactory(serviceRegistry);
 			} catch (Throwable e) {
