@@ -3,9 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.infogen</groupId>
-		<artifactId>infogen_aggregator</artifactId>
+		<artifactId>infogen_combine</artifactId>
 		<version>V1.0</version>
-		<relativePath>../infogen_aggregator</relativePath>
+		<relativePath>../infogen_combine</relativePath>
 	</parent>
 	<artifactId>infogen_hibernate</artifactId>
 	<packaging>jar</packaging>
@@ -54,7 +54,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.1.0.Final</version>
+			<version>5.2.1.Final</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.javassist</groupId>
@@ -65,13 +65,13 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
-			<version>5.1.0.Final</version>
+			<version>5.2.1.Final</version>
 		</dependency>
 
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.39</version>
+			<version>6.0.3</version>
 		</dependency>
 	</dependencies>
 	<build>
