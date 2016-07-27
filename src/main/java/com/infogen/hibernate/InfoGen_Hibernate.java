@@ -48,7 +48,7 @@ public abstract class InfoGen_Hibernate {
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties()).build();
 				sessionFactory = cfg.buildSessionFactory(serviceRegistry);
 			} catch (Throwable e) {
-				//throw new ExceptionInInitializerError(e);
+				throw new ExceptionInInitializerError(e);
 			}
 		}
 		LOGGER.info("#创建 hibernate  连接池成功");
