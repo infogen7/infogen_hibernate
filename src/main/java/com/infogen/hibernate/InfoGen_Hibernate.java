@@ -29,17 +29,17 @@ public abstract class InfoGen_Hibernate {
 	public static SessionFactory init_pool(String path) {
 		LOGGER.info("#创建 hibernate  连接池");
 		if (sessionFactory == null) {
+			AOP.getInstance().add_advice_method(AutoClose.class, new InfoGen_AOP_Handle_AutoClose());
+			if (AOP.getInstance().isadvice) {
+				LOGGER.error("AutoClose注解不可用,请将InfoGen_Hibernate初始化代码放在启动infogen之前");
+			}
+			// 1. 配置类型安全的准服务注册类，这是当前应用的单例对象，不作修改，所以声明为final
+			final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure(path).build();
 			try {
-				AOP.getInstance().add_advice_method(AutoClose.class, new InfoGen_AOP_Handle_AutoClose());
-				if (AOP.getInstance().isadvice) {
-					LOGGER.error("AutoClose注解不可用,请将InfoGen_Hibernate初始化代码放在启动infogen之前");
-				}
-
-				// 1. 配置类型安全的准服务注册类，这是当前应用的单例对象，不作修改，所以声明为final
-				final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure(path).build();
 				// 2. 根据服务注册类创建一个元数据资源集，同时构建元数据并生成应用一般唯一的的session工厂
 				sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
 			} catch (Throwable e) {
+				StandardServiceRegistryBuilder.destroy(registry);
 				throw new ExceptionInInitializerError(e);
 			}
 		}
