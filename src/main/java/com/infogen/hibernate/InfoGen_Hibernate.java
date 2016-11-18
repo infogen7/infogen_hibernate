@@ -31,7 +31,7 @@ public abstract class InfoGen_Hibernate {
 		if (sessionFactory == null) {
 			AOP.getInstance().add_advice_method(AutoClose.class, new InfoGen_AOP_Handle_AutoClose());
 			if (AOP.getInstance().isadvice) {
-				LOGGER.error("AutoClose注解不可用,请将InfoGen_Hibernate初始化代码放在启动infogen之前");
+				LOGGER.error("AutoClose注解不可用,请将 InfoGen_Hibernate 初始化代码放在服务启动之前");
 			}
 			// 1. 配置类型安全的准服务注册类，这是当前应用的单例对象，不作修改，所以声明为final
 			final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure(path).build();
@@ -43,13 +43,12 @@ public abstract class InfoGen_Hibernate {
 				throw new ExceptionInInitializerError(e);
 			}
 		}
-		LOGGER.info("#创建 hibernate  连接池成功");
+		LOGGER.info("#创建 hibernate 连接池成功");
 		return sessionFactory;
 	}
 
 	public InfoGen_Hibernate() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	// 需要自行关闭 session
