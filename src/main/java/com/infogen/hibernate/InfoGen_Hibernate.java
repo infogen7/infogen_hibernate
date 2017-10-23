@@ -26,9 +26,6 @@ public class InfoGen_Hibernate {
 	public static final ThreadLocal<List<Session>> list_session_thread_local = new ThreadLocal<>();
 	private SessionFactory sessionFactory = null;
 
-	/**
-	 * @param sessionFactory
-	 */
 	public InfoGen_Hibernate(String path) {
 		super();
 		LOGGER.info("#创建 hibernate  连接池:" + path);
