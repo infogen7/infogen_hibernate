@@ -21,13 +21,17 @@ import com.infogen.hibernate.event_handle.InfoGen_AOP_Handle_AutoClose;
  * @since 1.0
  * @version 1.0
  */
-public abstract class InfoGen_Hibernate {
+public class InfoGen_Hibernate {
 	private static final Logger LOGGER = LogManager.getLogger(InfoGen_Hibernate.class.getName());
 	public static final ThreadLocal<List<Session>> list_session_thread_local = new ThreadLocal<>();
-	private static SessionFactory sessionFactory = null;
+	private SessionFactory sessionFactory = null;
 
-	public static SessionFactory init_pool(String path) {
-		LOGGER.info("#创建 hibernate  连接池");
+	/**
+	 * @param sessionFactory
+	 */
+	public InfoGen_Hibernate(String path) {
+		super();
+		LOGGER.info("#创建 hibernate  连接池:" + path);
 		if (sessionFactory == null) {
 			AOP.getInstance().add_advice_method(AutoClose.class, new InfoGen_AOP_Handle_AutoClose());
 			if (AOP.getInstance().isadvice) {
@@ -43,8 +47,6 @@ public abstract class InfoGen_Hibernate {
 				throw new ExceptionInInitializerError(e);
 			}
 		}
-		LOGGER.info("#创建 hibernate 连接池成功");
-		return sessionFactory;
 	}
 
 	public InfoGen_Hibernate() {
@@ -52,7 +54,7 @@ public abstract class InfoGen_Hibernate {
 	}
 
 	// 需要自行关闭 session
-	public static Session createSession() {
+	public Session createSession() {
 		Session session = sessionFactory.openSession();
 		List<Session> list = list_session_thread_local.get();
 		if (list == null) {
@@ -67,7 +69,7 @@ public abstract class InfoGen_Hibernate {
 	 * 慎重使用:!!! 当前线程从发起到结束都只有一个不能执行session.close,或rollback后就不能再次进行调用 且mysql支持有问题
 	 */
 	@SuppressWarnings("unused")
-	private static Session getCurrentSession() {
+	private Session getCurrentSession() {
 		// jta 只有分布式事务处理才用 获取当前线程的 session 用与在 service 层控制事务
 		Session session = sessionFactory.getCurrentSession();
 		return session;
