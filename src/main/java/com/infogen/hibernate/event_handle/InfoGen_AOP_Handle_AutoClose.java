@@ -57,7 +57,7 @@ public class InfoGen_AOP_Handle_AutoClose extends AOP_Handle {
 				for (Session session : list) {
 					if (session != null && session.isOpen()) {
 						Transaction transaction = session.getTransaction();
-						if (transaction.getStatus().name().equals(TransactionStatus.ACTIVE)) {
+						if (transaction.getStatus().name().equals(TransactionStatus.ACTIVE.name())) {
 							transaction.rollback();
 						}
 						session.close();
