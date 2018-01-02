@@ -64,8 +64,9 @@ public class InfoGen_AOP_Handle_AutoClose extends AOP_Handle {
 					}
 				}
 				list.clear();
+				list = null;
+				list_session_thread_local.remove();
 			}
-			list = null;
 		} catch (Exception e) {
 			LOGGER.error("回滚 mysql 事务失败", e);
 		}
