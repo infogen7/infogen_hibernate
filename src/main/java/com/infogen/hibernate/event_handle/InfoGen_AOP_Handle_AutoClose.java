@@ -8,7 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.resource.transaction.spi.TransactionStatus;
 
 import com.infogen.aop.advice.event_handle.AOP_Handle;
 import com.infogen.aop.agent.Agent_Advice_Method;
@@ -57,7 +56,7 @@ public class InfoGen_AOP_Handle_AutoClose extends AOP_Handle {
 				for (Session session : list) {
 					if (session != null && session.isOpen()) {
 						Transaction transaction = session.getTransaction();
-						if (transaction.getStatus().name().equals(TransactionStatus.ACTIVE.name())) {
+						if (transaction.getStatus().canRollback()) {
 							transaction.rollback();
 						}
 						session.close();
