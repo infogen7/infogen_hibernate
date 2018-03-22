@@ -8,7 +8,6 @@ import com.infogen.core.json.Jackson;
 
 /**
  * @author larry
- * @email larrylv@outlook.com
  * @version 创建时间 2017年9月26日 上午10:33:28
  */
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE)

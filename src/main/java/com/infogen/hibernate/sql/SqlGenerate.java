@@ -5,7 +5,6 @@ import com.infogen.core.json.JSONObject;
 
 /**
  * @author larry
- * @email larrylv@outlook.com
  * @version 创建时间 2018年3月1日 下午4:59:50
  */
 public class SqlGenerate {
