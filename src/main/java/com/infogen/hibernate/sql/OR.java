@@ -15,14 +15,13 @@ public class OR extends Operator {
 
 	public OR(Operator... items) {
 		super();
-		this.type = OperatorTypes.OR.name();
 		for (Operator operation : items) {
 			this.items.add(operation);
 		}
 	}
 
 	private List<Operator> items = new ArrayList<>();
-	
+
 	public void add(Operator item) {
 		items.add(item);
 	}

@@ -9,11 +9,5 @@ import java.io.Serializable;
 public abstract class Operator implements Serializable {
 	private static final long serialVersionUID = -7735467654296659101L;
 
-	public enum OperatorTypes {
-		AND, OR, EQ, NE, GT, LT, GE, LE, BETWEEN, IN, NOTIN,JSON,JSONARRAY
-	}
-
-	public String type = OperatorTypes.EQ.name();
-
 	public abstract String to_filter();
 }

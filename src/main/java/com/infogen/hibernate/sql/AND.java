@@ -15,7 +15,6 @@ public class AND extends Operator {
 
 	public AND(Operator... items) {
 		super();
-		this.type = OperatorTypes.AND.name();
 		for (Operator operation : items) {
 			this.items.add(operation);
 		}

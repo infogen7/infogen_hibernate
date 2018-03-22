@@ -29,7 +29,7 @@ public class Where implements Serializable {
 			return "";
 		}
 		String to_filter = item.to_filter();
-		to_filter = "where " + to_filter;
+		to_filter = " where " + to_filter + " ";
 		return to_filter;
 	}
 

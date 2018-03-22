@@ -16,7 +16,6 @@ public class JsonArray extends Operator {
 
 	public JsonArray(String key, List<Object> items) {
 		super();
-		this.type = OperatorTypes.JSONARRAY.name();
 		this.key = key;
 		for (Object string : items) {
 			this.items.add(string.toString());
@@ -25,14 +24,13 @@ public class JsonArray extends Operator {
 
 	private List<String> items = new ArrayList<>();
 	public String key = "";
-	public Boolean is_number = false;
 
 	public void add(String item) {
 		this.items.add(item);
 	}
 
 	public String to_filter() {
-		if (key.isEmpty() || items.isEmpty()) {
+		if (key == null || key.trim().isEmpty() || items.isEmpty()) {
 			return " 1 = 1 ";
 		}
 		// abroad ?| array['德国', '英国']::jsonb

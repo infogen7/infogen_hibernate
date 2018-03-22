@@ -12,17 +12,15 @@ public class LE extends Operator {
 
 	public LE(String key, Number value) {
 		super();
-		this.type = OperatorTypes.LE.name();
 		this.key = key;
 		this.value = value;
-		this.is_number = true;
 	}
 
 	private Number value = 0;
 	public String key = "";
-	public Boolean is_number = false;
+
 	public String to_filter() {
-		if (key.isEmpty()) {
+		if (key == null || key.trim().isEmpty()) {
 			return " 1 = 1 ";
 		}
 		StringBuilder string_builder = new StringBuilder();

@@ -12,20 +12,17 @@ public class Between extends Operator {
 
 	public Between(String key, Number min, Number max) {
 		super();
-		this.type = OperatorTypes.BETWEEN.name();
 		this.key = key;
 		this.min = min;
 		this.max = max;
-		this.is_number = true;
 	}
 
 	private Number min = 0d;
 	private Number max = 0d;
 	public String key = "";
-	public Boolean is_number = false;
 
 	public String to_filter() {
-		if (key.isEmpty()) {
+		if (key == null || key.isEmpty()) {
 			return " 1 = 1 ";
 		}
 		StringBuilder string_builder = new StringBuilder();

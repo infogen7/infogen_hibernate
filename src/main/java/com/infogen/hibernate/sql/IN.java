@@ -14,11 +14,9 @@ public class IN extends Operator {
 
 	private static final long serialVersionUID = -5168623955997925940L;
 
-	public IN(String key, Boolean is_number, List<Object> items) {
+	public IN(String key, List<Object> items) {
 		super();
-		this.type = OperatorTypes.IN.name();
 		this.key = key;
-		this.is_number = is_number;
 		for (Object string : items) {
 			this.items.add(string.toString());
 		}
@@ -26,27 +24,22 @@ public class IN extends Operator {
 
 	private List<String> items = new ArrayList<>();
 	public String key = "";
-	public Boolean is_number = false;
 
 	public void add(String item) {
 		items.add(item);
 	}
 
 	public String to_filter() {
-		if (key.isEmpty() || items.isEmpty()) {
+		if (key == null || key.trim().isEmpty() || items.isEmpty()) {
 			return " 1 = 1 ";
 		}
 		StringBuilder string_builder = new StringBuilder();
 		string_builder.append(" ").append(key).append(" IN ");
 		string_builder.append("(");
 		for (int i = 0; i < items.size(); i++) {
-			if (!is_number) {
-				string_builder.append("'");
-			}
+			string_builder.append("'");
 			string_builder.append(items.get(i));
-			if (!is_number) {
-				string_builder.append("'");
-			}
+			string_builder.append("'");
 			if (i != items.size() - 1) {
 				string_builder.append(" , ");
 			}

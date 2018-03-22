@@ -17,7 +17,6 @@ public class Json extends Operator {
 
 	public Json(String key, List<Object> items) {
 		super();
-		this.type = OperatorTypes.JSON.name();
 		this.key = key;
 		for (Object string : items) {
 			this.items.put(string.toString(), 1);
@@ -26,7 +25,6 @@ public class Json extends Operator {
 
 	private Map<String, Integer> items = new HashMap<>();
 	public String key = "";
-	public Boolean is_number = false;
 
 	public void add(String item) {
 		this.items.put(item, 1);
@@ -37,7 +35,7 @@ public class Json extends Operator {
 		// consumer_preference ? '健身'
 		// abroad ?| array['德国', '英国']
 		// jsonb_exists_any(abroad,array['巴西'])
-		if (key.isEmpty() || items.isEmpty()) {
+		if (key == null || key.trim().isEmpty() || items.isEmpty()) {
 			return " 1 = 1 ";
 		}
 		StringBuilder string_builder = new StringBuilder();

@@ -12,29 +12,22 @@ public class NE extends Operator {
 
 	public NE(String key, Boolean is_number, String value) {
 		super();
-		this.type = OperatorTypes.NE.name();
 		this.key = key;
 		this.value = value;
-		this.is_number = is_number;
 	}
 
 	private String value = "";
 	public String key = "";
-	public Boolean is_number = false;
 
 	public String to_filter() {
-		if (key.isEmpty() || value.isEmpty()) {
+		if (key == null || key.trim().isEmpty() || value == null || value.trim().isEmpty()) {
 			return " 1 = 1 ";
 		}
 		StringBuilder string_builder = new StringBuilder();
 		string_builder.append(" ").append(key).append(" != ");
-		if (!is_number) {
-			string_builder.append("'");
-		}
+		string_builder.append("'");
 		string_builder.append(value);
-		if (!is_number) {
-			string_builder.append("'");
-		}
+		string_builder.append("'");
 		string_builder.append(" ");
 		return string_builder.toString();
 	}
