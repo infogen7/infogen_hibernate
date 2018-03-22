@@ -43,14 +43,14 @@ public class SqlGenerate {
 			operator = new JsonArray(key, array);
 		} else if (type.equals("IN")) {
 			JSONArray array = jsonobject.getAsJSONArray("value", new JSONArray());
-			operator = new IN(key, false, array);
+			operator = new IN(key, array);
 		} else if (type.equals("NOTIN")) {
 			JSONArray array = jsonobject.getAsJSONArray("value", new JSONArray());
-			operator = new NOTIN(key, false, array);
+			operator = new NOTIN(key, array);
 		} else if (type.equals("EQ")) {
-			operator = new EQ(key, false, jsonobject.getAsString("value", null));
+			operator = new EQ(key, jsonobject.getAsString("value", null));
 		} else if (type.equals("NE")) {
-			operator = new NE(key, false, jsonobject.getAsString("value", null));
+			operator = new NE(key, jsonobject.getAsString("value", null));
 		} else if (type.equals("GT")) {
 			operator = new GT(key, jsonobject.getAsDouble("value", null));
 		} else if (type.equals("LT")) {
