@@ -53,18 +53,18 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.2.15.Final</version>
-			<!-- <exclusions> -->
-			<!-- <exclusion> -->
-			<!-- <groupId>org.javassist</groupId> -->
-			<!-- <artifactId>javassist</artifactId> -->
-			<!-- </exclusion> -->
-			<!-- </exclusions> -->
+			<version>5.2.16.Final</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.javassist</groupId>
+					<artifactId>javassist</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
-			<version>5.2.15.Final</version>
+			<version>5.2.16.Final</version>
 		</dependency>
 	</dependencies>
 	<build>
