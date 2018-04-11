@@ -2,6 +2,7 @@ package com.infogen.hibernate.sql;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.infogen.core.json.Jackson;
@@ -14,7 +15,7 @@ import com.infogen.core.json.Jackson;
 public class JsonArray extends Operator {
 	private static final long serialVersionUID = -7495371176994686065L;
 
-	public JsonArray(String key, List<Object> items) {
+	public JsonArray(String key, Set<Object> items) {
 		super();
 		this.key = key;
 		for (Object string : items) {

@@ -1,5 +1,8 @@
 package com.infogen.hibernate.sql;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.infogen.core.json.JSONArray;
 import com.infogen.core.json.JSONObject;
 
@@ -37,16 +40,32 @@ public class SqlGenerate {
 			operator = or;
 		} else if (type.equals("JSON")) {// Json
 			JSONArray array = jsonobject.getAsJSONArray("value", new JSONArray());
-			operator = new Json(key, array);
+			Set<Object> set = new HashSet<>();
+			for (Object object : array) {
+				set.add(object);
+			}
+			operator = new Json(key, set);
 		} else if (type.equals("JSONARRAY")) {
 			JSONArray array = jsonobject.getAsJSONArray("value", new JSONArray());
-			operator = new JsonArray(key, array);
+			Set<Object> set = new HashSet<>();
+			for (Object object : array) {
+				set.add(object);
+			}
+			operator = new JsonArray(key, set);
 		} else if (type.equals("IN")) {
 			JSONArray array = jsonobject.getAsJSONArray("value", new JSONArray());
-			operator = new IN(key, array);
+			Set<Object> set = new HashSet<>();
+			for (Object object : array) {
+				set.add(object);
+			}
+			operator = new IN(key, set);
 		} else if (type.equals("NOTIN")) {
 			JSONArray array = jsonobject.getAsJSONArray("value", new JSONArray());
-			operator = new NOTIN(key, array);
+			Set<Object> set = new HashSet<>();
+			for (Object object : array) {
+				set.add(object);
+			}
+			operator = new NOTIN(key, set);
 		} else if (type.equals("EQ")) {
 			operator = new EQ(key, jsonobject.getAsString("value", null));
 		} else if (type.equals("NE")) {

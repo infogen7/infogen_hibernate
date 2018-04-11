@@ -2,6 +2,7 @@ package com.infogen.hibernate.sql;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
@@ -14,7 +15,7 @@ public class IN extends Operator {
 
 	private static final long serialVersionUID = -5168623955997925940L;
 
-	public IN(String key, List<Object> items) {
+	public IN(String key, Set<Object> items) {
 		super();
 		this.key = key;
 		for (Object string : items) {
