@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 public class NOTIN extends Operator {
 	private static final long serialVersionUID = 103243415527557652L;
 
-	public NOTIN(String key, Set<Object> items) {
+	public NOTIN(String key, Set<? extends Object> items) {
 		super();
 		this.key = key;
 		for (Object string : items) {

@@ -15,7 +15,7 @@ import com.infogen.core.json.Jackson;
 public class JsonArray extends Operator {
 	private static final long serialVersionUID = -7495371176994686065L;
 
-	public JsonArray(String key, Set<Object> items) {
+	public JsonArray(String key, Set<? extends Object> items) {
 		super();
 		this.key = key;
 		for (Object string : items) {

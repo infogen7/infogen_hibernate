@@ -15,7 +15,7 @@ import com.infogen.core.json.Jackson;
 public class Json extends Operator {
 	private static final long serialVersionUID = -7495371176994686065L;
 
-	public Json(String key, Set<Object> items) {
+	public Json(String key, Set<? extends Object> items) {
 		super();
 		this.key = key;
 		for (Object string : items) {

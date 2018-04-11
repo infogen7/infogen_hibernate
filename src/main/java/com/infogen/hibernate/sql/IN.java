@@ -15,7 +15,7 @@ public class IN extends Operator {
 
 	private static final long serialVersionUID = -5168623955997925940L;
 
-	public IN(String key, Set<Object> items) {
+	public IN(String key, Set<? extends Object> items) {
 		super();
 		this.key = key;
 		for (Object string : items) {
